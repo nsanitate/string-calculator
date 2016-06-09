@@ -1,4 +1,5 @@
 const expect = require('chai').expect;
+const Calculator = require('../source/calculator');
 
 describe('Calculator', () => {
 
@@ -11,12 +12,14 @@ describe('Calculator', () => {
 
   });
 
+  it('should sum with just one number', () => {
+
+    let calculator = new Calculator();
+    let actual = calculator.add('1');
+
+    expect(actual).to.equal(1);
+
+  });
+
+
 });
-
-class Calculator {
-
-  add() {
-    return 0;
-  };
-
-}
