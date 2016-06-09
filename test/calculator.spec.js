@@ -23,7 +23,7 @@ describe('Calculator', () => {
 
   });
 
-  it('should sum with two numbers', () => {
+  it('should sum with two numbers separated by comma', () => {
 
     checkIO('1,2', 3);
 
@@ -31,18 +31,26 @@ describe('Calculator', () => {
 
   it('should throw exception if pass undefined', () => {
 
-    expect(calculator.add).to.throw('Invalid argument');
+    checkError(calculator.add.bind(calculator));
 
   });
 
-  // ^(\d(,\d)?)?$
-  // xit('should throw exception if pass not well formed string', () => {
-  //   expect(calculator.add.bind(calculator, 'a1b2c3')).to.throw('Invalid argument');
-  // });
+  it('should throw exception if pass not well formed string', () => {
+
+    checkError(calculator.add.bind(calculator, 'a1b2c3'));
+    checkError(calculator.add.bind(calculator, '1,\n'));
+
+  });
 
   it('should sum with n numbers', () => {
 
     checkIO('1,2,10,20', 33);
+
+  });
+
+  it('should sum with n numbers separated by comma and \\n', () => {
+
+    checkIO('1\n2,3', 6);
 
   });
 
@@ -52,5 +60,11 @@ describe('Calculator', () => {
     expect(actual).to.equal(output);
 
   }
+
+  function checkError(input) {
+    
+    expect(input).to.throw(Error, 'Invalid argument');
+  
+}
 
 });
