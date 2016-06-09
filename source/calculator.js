@@ -5,7 +5,10 @@ class Calculator {
     if (numbers.length === 0) {
       return 0;
     } else {
-      return parseInt(numbers);
+
+      return numbers.split(',')
+        .map((item)=> parseInt(item))
+        .reduce((memo, item) => memo + item);
     }
 
   };
