@@ -54,12 +54,6 @@ describe('Calculator', () => {
 
   });
 
-  it('should define delimiter', () => {
-
-    checkIO('//;\n1;2', 3);
-    
-  });
-
   function checkIO(input, output) {
 
     let actual = calculator.add(input);
@@ -68,9 +62,9 @@ describe('Calculator', () => {
   }
 
   function checkError(input) {
-
+    
     expect(input).to.throw(Error, 'Invalid argument');
-
-  }
+  
+}
 
 });
